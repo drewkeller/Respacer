@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+  <!--  The VSCT compiler (the tool that translates this file into the binary
+        format that VisualStudio will consume) has the ability to run a preprocessor
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so
+        it is possible to define includes and macros with the same syntax used
+        in C++ files. Using this ability of the compiler here, we include some files
+        defining some of the constants that we will use inside the file. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h"/>
+
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h"/>
+
+  <!--The Commands section is where commands, menus, and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+  <Commands package="guidUntabifyCommandPackage">
+    <!-- Inside this section we have different sub-sections: one for the menus, another
+    for the menu groups, one for the buttons (the actual commands), one for the combos
+    and the last one for the bitmaps used. Each element is identified by a command id that
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually
+    called "command set" and is used to group different command inside a logically related
+    group; your package should define its own command set in order to avoid collisions
+    with command ids defined by other packages. -->
+
+    <!-- In this section you can define new menu groups. A menu group is a container for
+         other menus or buttons (commands); from a visual point of view you can see the
+         group as the part of a menu contained between two lines. The parent of a group
+         must be a menu. -->
+    <Groups>
+      <!-- Refer to:
+           https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.shell.vsmenus_fields.aspx
+           https://msdn.microsoft.com/en-us/library/cc807687.aspx
+           https://msdn.microsoft.com/en-us/library/cc826118.aspx
+           -->
+      <!-- Indent Text -->
+      <Group guid="guidUntabifyText" id="MenuGroup_UntabifyText" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
+      </Group>
+      <!-- Indent File -->
+      <Group guid="guidUntabifyFile" id="MenuGroup_UntabifyFile" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+      </Group>
+      <!-- Indent Folder -->
+      <Group guid="guidUntabifyFolder" id="MenuGroup_UntabifyFolder" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE"/>
+      </Group>
+      <!-- Indent Project -->
+      <Group guid="guidUntabifyProject" id="MenuGroup_UntabifyProject" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+      </Group>
+      <!-- Indent Solution -->
+      <Group guid="guidUntabifySolution" id="MenuGroup_UntabifySolution" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
+      </Group>
+    </Groups>
+
+    <!--Buttons section. -->
+    <!--This section defines the elements the user can interact with, like a menu command or a button
+        or combo box in a toolbar. -->
+    <Buttons>
+      <!--To define a menu group you have to specify its ID, the parent menu and its display priority.
+          The command is visible and enabled by default. If you need to change the visibility, status, etc, you can use
+          the CommandFlag node.
+          You can add more than one CommandFlag node e.g.:
+              <CommandFlag>DefaultInvisible</CommandFlag>
+              <CommandFlag>DynamicVisibility</CommandFlag>
+          If you do not want an image next to your command, remove the Icon node /> -->
+      <Button guid="guidTabifyText" id="CMD_TabifyText" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifyText" id="MenuGroup_UntabifyText" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpTab" />
+        <Strings>
+          <ButtonText>Tabify</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidUntabifyText" id="CMD_UnTabifyText" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifyText" id="MenuGroup_UntabifyText" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpSpace" />
+        <Strings>
+          <ButtonText>Untabify</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidTabifyFile" id="CMD_TabifyFile" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifyFile" id="MenuGroup_UntabifyFile" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpTab" />
+        <Strings>
+          <ButtonText>Tabify File</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidUntabifyFile" id="CMD_UnTabifyFile" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifyFile" id="MenuGroup_UntabifyFile" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpSpace" />
+        <Strings>
+          <ButtonText>Untabify File</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidTabifyFolder" id="CMD_TabifyFolder" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifyFolder" id="MenuGroup_UntabifyFolder" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpTab" />
+        <Strings>
+          <ButtonText>Tabify Files In Folder</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidUntabifyFolder" id="CMD_UnTabifyFolder" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifyFolder" id="MenuGroup_UntabifyFolder" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpSpace" />
+        <Strings>
+          <ButtonText>Untabify Files In Folder</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidTabifyProject" id="CMD_TabifyProject" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifyProject" id="MenuGroup_UntabifyProject" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpTab" />
+        <Strings>
+          <ButtonText>Tabify Project</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidUntabifyProject" id="CMD_UnTabifyProject" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifyProject" id="MenuGroup_UntabifyProject" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpSpace" />
+        <Strings>
+          <ButtonText>Untabify Project</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidTabifySolution" id="CMD_TabifySolution" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifySolution" id="MenuGroup_UntabifySolution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpTab" />
+        <Strings>
+          <ButtonText>Tabify Solution</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidUntabifySolution" id="CMD_UnTabifySolution" priority="0x0500" type="Button">
+        <Parent guid="guidUntabifySolution" id="MenuGroup_UntabifySolution" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Icon guid="bmpIndentGroup" id="bmpSpace" />
+        <Strings>
+          <ButtonText>Untabify Solution</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+    <Bitmaps>
+      <!--  The bitmap id is defined in a way that is a little bit different from the others:
+            the declaration starts with a guid for the bitmap strip, then there is the resource id of the
+            bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
+            inside a button definition. An important aspect of this declaration is that the element id
+            must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+      <Bitmap guid="bmpIndentGroup" href="Resources\IndentCommand.png" usedList="bmpTab, bmpSpace"/>
+      </Bitmaps>
+  </Commands>
+
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidUntabifyCommandPackage" value="{ad01bc03-fa89-4219-b8e7-69330e9de659}" />
+
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidTabifyText" value="{325ab79d-926c-44bd-92d1-dd3e6670775c}">
+      <IDSymbol name="MenuGroup_UntabifyText" value="0x1020" />
+      <IDSymbol name="CMD_TabifyText" value="0x0200" />
+    </GuidSymbol>
+    <GuidSymbol name="guidUntabifyText" value="{9a046398-6803-44b3-b897-7327ee81e1e0}">
+      <IDSymbol name="MenuGroup_UntabifyText" value="0x1020" />
+      <IDSymbol name="CMD_UnTabifyText" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="guidTabifyFile" value="{fb7c5b72-6f99-43b8-a173-787fc31f1edf}">
+      <IDSymbol name="MenuGroup_UntabifyFile" value="0x1020" />
+      <IDSymbol name="CMD_TabifyFile" value="0x0201" />
+    </GuidSymbol>
+    <GuidSymbol name="guidUntabifyFile" value="{cbf0b286-9e0a-45dd-92f6-5dcfc971b277}">
+      <IDSymbol name="MenuGroup_UntabifyFile" value="0x1020" />
+      <IDSymbol name="CMD_UnTabifyFile" value="0x0101" />
+    </GuidSymbol>
+    <GuidSymbol name="guidTabifyFolder" value="{0d5a306a-6817-4db6-8f83-cf591fdd7830}">
+      <IDSymbol name="MenuGroup_UntabifyFolder" value="0x1020" />
+      <IDSymbol name="CMD_TabifyFolder" value="0x0202" />
+    </GuidSymbol>
+    <GuidSymbol name="guidUntabifyFolder" value="{57e87176-3945-4403-a310-d9a78567a9d6}">
+      <IDSymbol name="MenuGroup_UntabifyFolder" value="0x1020" />
+      <IDSymbol name="CMD_UnTabifyFolder" value="0x0102" />
+    </GuidSymbol>
+    <GuidSymbol name="guidTabifyProject" value="{628e66a7-634d-42ca-8d11-449b65009e56}">
+      <IDSymbol name="MenuGroup_UntabifyProject" value="0x1020" />
+      <IDSymbol name="CMD_TabifyProject" value="0x0203" />
+    </GuidSymbol>
+    <GuidSymbol name="guidUntabifyProject" value="{e2db1dd0-d7ff-46fd-8982-142bf3fb233c}">
+      <IDSymbol name="MenuGroup_UntabifyProject" value="0x1020" />
+      <IDSymbol name="CMD_UnTabifyProject" value="0x0103" />
+    </GuidSymbol>
+    <GuidSymbol name="guidTabifySolution" value="{b52a3c14-b757-415c-b442-699570732ff1}">
+      <IDSymbol name="MenuGroup_UntabifySolution" value="0x1020" />
+      <IDSymbol name="CMD_TabifySolution" value="0x0204" />
+    </GuidSymbol>
+    <GuidSymbol name="guidUntabifySolution" value="{e1022069-4113-4e61-8f62-ff3c988ca1f2}">
+      <IDSymbol name="MenuGroup_UntabifySolution" value="0x1020" />
+      <IDSymbol name="CMD_UnTabifySolution" value="0x0104" />
+    </GuidSymbol>
+
+    <GuidSymbol name="bmpIndentGroup" value="{40c7e641-ed0e-49b3-ad1f-65cfe7619701}" >
+      <IDSymbol name="bmpTab" value="1" />
+      <IDSymbol name="bmpSpace" value="2" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
