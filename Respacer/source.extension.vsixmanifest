@@ -4,8 +4,10 @@
     <Identity Id="Respacer.DrewKeller.5648ae51-bf84-471f-be78-ed152a554e2e" Version="1.0" Language="en-US" Publisher="Drew Keller" />
     <DisplayName>Respacer</DisplayName>
     <Description xml:space="preserve">Apply indentation to a solution, a project, a folder, or a file. This is a great way to normalize the use of tabs or spaces without affecting other formatting. </Description>
+    <MoreInfo>https://github.com/drewkeller/Respacer</MoreInfo>
     <License>LICENSE.md</License>
-    <Icon>Resources/Respacer.ico</Icon>
+    <Icon>Respacer_32.png</Icon>
+    <PreviewImage>Respacer_200.png</PreviewImage>
     <Tags>indentation, indent, tab, spaces</Tags>
   </Metadata>
   <Installation>

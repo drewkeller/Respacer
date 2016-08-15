@@ -7,8 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Respacer", "Respacer\Respac
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2052605F-FBFE-4083-A5CA-D8E7CDDD405B}"
 	ProjectSection(SolutionItems) = preProject
-		Respacer\LICENSE.md = Respacer\LICENSE.md
-		Respacer\README.md = Respacer\README.md
+		LICENSE.md = LICENSE.md
+		README.md = README.md
 		Rebracer.xml = Rebracer.xml
 	EndProjectSection
 EndProject
