@@ -98,6 +98,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+	<Content Include="LICENSE.md">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="Resources\IndentCommand.png" />
     <VSCTCompile Include="IndentCommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
